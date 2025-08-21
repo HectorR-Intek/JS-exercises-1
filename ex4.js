@@ -6,8 +6,6 @@
 function copyProp(objA, objB, propsInput){
     const props = propsInput || Object.getOwnPropertyNames(objA) ;
     const values = Object.values(objA);
-    console.log(props);
-    console.log(values);
 
     for(let i = 0; i<props.length; i++){
         let prop =props[i];

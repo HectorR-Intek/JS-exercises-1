@@ -5,25 +5,24 @@ of other functions to a determined amount of times. */
 function limitFunc(func, times){
     let counter = 0;
 
-    return function(){
+    return function(...args){
         if (counter < times){
             counter++;
-            func();
-            return;
+            return func.apply(this, args);  // Same context, same arguments as usually called.
         }
-        console.log("Function has been called too many times");
+        throw new Error("Function has been called too many times");
     }
 }
 
-function test(){
-    console.log("This is a test");
+function print(...args){
+    console.log(`This prints the arguments: ${args}`);
     return;
 }
 
-const limited = limitFunc(test, 4);
-limited();
-limited();
-limited();
-limited();
-limited();
-limited();
+print("Hello ", "Everyone");
+
+const limited = limitFunc(print, 3);
+limited("Hello ", "Everyone");
+limited("Hello ", "Everyone");
+limited("Hello ", "Everyone");
+limited("Hello ", "Everyone");

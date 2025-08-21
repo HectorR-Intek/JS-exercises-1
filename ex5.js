@@ -13,11 +13,12 @@ function specialCounter(argument){
             return vowels;
         case "number":
             let logTen = Math.log(argument)/Math.log(10);
-            return Math.ceil(logTen);
+            return Math.floor(logTen+1);
         default:
-            return "Input has to be either a string or a number.";
+            throw new Error("Input has to be either a string or a number.");
     }    
 }
 
 console.log(specialCounter("Renata Vazquez")); //exp out: 6
 console.log(specialCounter(14567));
+console.log(specialCounter(100));
